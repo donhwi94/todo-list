@@ -40,6 +40,7 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'rest_framework',
 ]
 
 PROJECT_APPS = [
@@ -137,3 +138,8 @@ GRAPH_MODELS = {
     'all_applications' : True,
     'group_models' : True,
 }
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES' : ('rest_framework.permissions.IsAdminUser'),
+#     'PAGINATE_BY' : 10
+# }
