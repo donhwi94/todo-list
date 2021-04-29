@@ -18,7 +18,12 @@ def api_root(request, format=None):
 
 class TodoList(APIView):
     def get(self, request, format=None):
-        todolist = Todo.objects.all().order_by('-created_at')
+        # filtering
+        if request.query_params:
+            is_completed_param = self.request.query_params.get('is_completed').capitalize()
+            todolist = Todo.objects.filter(is_completed=is_completed_param).order_by('-created_at')
+        else:
+            todolist = Todo.objects.all().order_by('-created_at')
         serializer = TodoSerializer(todolist, many=True)
         return Response(serializer.data)
 
