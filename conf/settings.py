@@ -139,6 +139,10 @@ GRAPH_MODELS = {
     'group_models' : True,
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES' : ('rest_framework.permissions.IsAdminUser'),
 #     'PAGINATE_BY' : 10
