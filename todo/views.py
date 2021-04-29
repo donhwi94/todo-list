@@ -1,46 +1,28 @@
-from django.http import Http404
-
-from rest_framework import status
-from rest_framework.views import APIView
-from rest_framework.response import Response 
+from rest_framework import mixins, generics
 
 from .models import Todo, Comment
 from .serializers import TodoSerializer, CommentSerializer
 
-class TodoList(APIView):
-    def get(self, request, format=None):
-        todolist = Todo.objects.all()
-        serializer = TodoSerializer(todolist, many=True)
-        return Response(serializer.data)
+class TodoList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
 
-    def post(self, request, format=None):
-        serializer = TodoSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
 
-class TodoDetail(APIView):
-    def get_object(self, pk):
-        try:
-            return Todo.objects.get(pk=pk)
-        except Todo.DoesNotExist:
-            raise Http404
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
-    def get(self, request, pk, format=None):
-        todolist = self.get_object(pk)
-        serializer = TodoSerializer(todo)
-        return Response(serializer.data)
+class TodoDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
 
-    def put(self, request, pk, format=None):
-        todolist = self.get_object(pk)
-        serializer = TodoSerializer(todo, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
 
-    def delete(self, request, pk, format=None):
-        todolist = self.get_object(pk)
-        todo.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
