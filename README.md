@@ -25,5 +25,7 @@
 - 개발 기간 : 2021-04-29 ~ 2021-04-30
 
 # API List
+![스크린샷 2021-06-08 오전 2 05 59](https://user-images.githubusercontent.com/80886445/121060827-1998d880-c7fe-11eb-8e34-3023d11cfd58.png)
 
 # DB ERD
+![todo_project_visualized](https://user-images.githubusercontent.com/80886445/121060720-fbcb7380-c7fd-11eb-837a-38403af41919.png)
