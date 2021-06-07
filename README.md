@@ -13,12 +13,17 @@
 - 댓글은 최신 등록 날짜로 정렬한다 
 
 # Tech Stack
-- language : Python 3.9.4
-- framework : Django
+- Language : Python 3.9.4
+- Web Framework : Django 3.2, Django rest framework 3.12.4
+- database : SQLite3
+- API : Restful API
+- Docs : Swagger
 
 # 개발 환경 및 개발 기간
 - OS : MacOS 
 - IDE : Visual Studio Code 1.55.1
 - 개발 기간 : 2021-04-29 ~ 2021-04-30
 
-(추후 업데이트)
+# API List
+
+# DB ERD
